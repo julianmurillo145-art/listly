@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 
 export default function Page() {
   const [vehicleData, setVehicleData] = useState("");
   const [type, setType] = useState("Used");
   const [output, setOutput] = useState("");
+  const [carInfo, setCarInfo] = useState(null);
 
   const [monthlyPayment, setMonthlyPayment] = useState("");
   const [dueAtSigning, setDueAtSigning] = useState("");
@@ -20,6 +23,12 @@ export default function Page() {
     if (data) {
       const decoded = decodeURIComponent(data);
       setVehicleData(decoded);
+
+      try {
+        setCarInfo(JSON.parse(decoded));
+      } catch {
+        setCarInfo(null);
+      }
     }
   }, []);
 
@@ -32,23 +41,26 @@ export default function Page() {
 
   const buildHighlights = (car) => {
     const highlights = [];
-
     if (car.drivetrain) highlights.push(car.drivetrain);
     if (car.transmission) highlights.push(car.transmission);
     if (car.engine) highlights.push(car.engine);
-
     return highlights;
   };
 
-  const generate = () => {
-    let car = {};
-
+  const parseVehicleData = () => {
     try {
-      car = JSON.parse(vehicleData);
+      const car = JSON.parse(vehicleData);
+      setCarInfo(car);
+      return car;
     } catch {
       setOutput("Could not read vehicle data. Make sure the bookmarklet pasted valid vehicle data.");
-      return;
+      return null;
     }
+  };
+
+  const generate = () => {
+    const car = parseVehicleData();
+    if (!car) return;
 
     const vehicleName = car.title || "Vehicle Listing";
     const description = cleanDescription(car.description);
@@ -115,6 +127,58 @@ If you have any questions about the vehicle or would like to schedule a test dri
     setOutput(listing.trim());
   };
 
+  const copyPhotoLinks = async () => {
+    const photos = carInfo?.photos || [];
+    if (!photos.length) {
+      alert("No photos found.");
+      return;
+    }
+
+    await navigator.clipboard.writeText(photos.join("\n"));
+    alert("Photo links copied!");
+  };
+
+  const downloadAllPhotos = async () => {
+    const car = carInfo || parseVehicleData();
+    const photos = car?.photos || [];
+
+    if (!photos.length) {
+      alert("No photos found.");
+      return;
+    }
+
+    const zip = new JSZip();
+    const folder = zip.folder(car.vin || "vehicle-photos");
+
+    for (let i = 0; i < photos.length; i++) {
+      try {
+        const response = await fetch(photos[i]);
+        const blob = await response.blob();
+        folder.file(`photo-${String(i + 1).padStart(2, "0")}.jpg`, blob);
+      } catch {
+        console.log("Failed photo:", photos[i]);
+      }
+    }
+
+    const content = await zip.generateAsync({ type: "blob" });
+    saveAs(content, `${car.vin || "vehicle-photos"}.zip`);
+  };
+
+  const copyListing = async () => {
+    try {
+      await navigator.clipboard.writeText(output);
+      alert("Listing copied!");
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = output;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      alert("Listing copied!");
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-4xl font-semibold mb-2">Generate Listing</h1>
@@ -128,8 +192,39 @@ If you have any questions about the vehicle or would like to schedule a test dri
           className="w-full p-4 border rounded-xl h-44"
           placeholder="Vehicle data from Listly bookmarklet will appear here..."
           value={vehicleData}
-          onChange={(e) => setVehicleData(e.target.value)}
+          onChange={(e) => {
+            setVehicleData(e.target.value);
+            try {
+              setCarInfo(JSON.parse(e.target.value));
+            } catch {
+              setCarInfo(null);
+            }
+          }}
         />
+
+        {carInfo?.photos?.length > 0 && (
+          <div className="bg-gray-50 border rounded-xl p-4">
+            <p className="font-semibold mb-3">
+              Photos Found: {carInfo.photos.length}
+            </p>
+
+            <div className="flex gap-2">
+              <button
+                onClick={downloadAllPhotos}
+                className="px-4 py-2 rounded-lg bg-black text-white"
+              >
+                Download All Photos
+              </button>
+
+              <button
+                onClick={copyPhotoLinks}
+                className="px-4 py-2 rounded-lg border bg-white text-black"
+              >
+                Copy Photo Links
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="flex gap-2">
           {["New", "Used", "CPO"].map((t) => (
@@ -147,47 +242,15 @@ If you have any questions about the vehicle or would like to schedule a test dri
 
         {type === "New" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-gray-50 p-4 rounded-xl border">
-            <input
-              className="p-3 border rounded-xl"
-              placeholder="Monthly payment, e.g. $199/mo + tax"
-              value={monthlyPayment}
-              onChange={(e) => setMonthlyPayment(e.target.value)}
-            />
-
-            <input
-              className="p-3 border rounded-xl"
-              placeholder="Due at signing, e.g. $3,999"
-              value={dueAtSigning}
-              onChange={(e) => setDueAtSigning(e.target.value)}
-            />
-
-            <input
-              className="p-3 border rounded-xl"
-              placeholder="Lease term, e.g. 24 months"
-              value={leaseTerm}
-              onChange={(e) => setLeaseTerm(e.target.value)}
-            />
-
-            <input
-              className="p-3 border rounded-xl"
-              placeholder="Annual miles, e.g. 7,500 miles/year"
-              value={annualMiles}
-              onChange={(e) => setAnnualMiles(e.target.value)}
-            />
-
-            <textarea
-              className="p-3 border rounded-xl md:col-span-2 h-24"
-              placeholder="Optional lease notes, approval, taxes/fees, stock limitations, etc."
-              value={leaseNotes}
-              onChange={(e) => setLeaseNotes(e.target.value)}
-            />
+            <input className="p-3 border rounded-xl" placeholder="Monthly payment, e.g. $199/mo + tax" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} />
+            <input className="p-3 border rounded-xl" placeholder="Due at signing, e.g. $3,999" value={dueAtSigning} onChange={(e) => setDueAtSigning(e.target.value)} />
+            <input className="p-3 border rounded-xl" placeholder="Lease term, e.g. 24 months" value={leaseTerm} onChange={(e) => setLeaseTerm(e.target.value)} />
+            <input className="p-3 border rounded-xl" placeholder="Annual miles, e.g. 7,500 miles/year" value={annualMiles} onChange={(e) => setAnnualMiles(e.target.value)} />
+            <textarea className="p-3 border rounded-xl md:col-span-2 h-24" placeholder="Optional lease notes, approval, taxes/fees, stock limitations, etc." value={leaseNotes} onChange={(e) => setLeaseNotes(e.target.value)} />
           </div>
         )}
 
-        <button
-          onClick={generate}
-          className="w-full bg-black text-white p-4 rounded-xl"
-        >
+        <button onClick={generate} className="w-full bg-black text-white p-4 rounded-xl">
           Generate Marketplace Listing
         </button>
       </div>
@@ -197,25 +260,9 @@ If you have any questions about the vehicle or would like to schedule a test dri
           <div className="flex justify-between items-center mb-3">
             <h2 className="font-semibold">Generated Listing</h2>
 
-           <button
-  onClick={async () => {
-    try {
-      await navigator.clipboard.writeText(output);
-      alert("Listing copied!");
-    } catch {
-      const textArea = document.createElement("textarea");
-      textArea.value = output;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-      alert("Listing copied!");
-    }
-  }}
-  className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90"
->
-  Copy
-</button>
+            <button onClick={copyListing} className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90">
+              Copy
+            </button>
           </div>
 
           <pre className="whitespace-pre-wrap text-sm text-gray-700">
