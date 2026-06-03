@@ -7,42 +7,32 @@ export default function Page() {
   const [type, setType] = useState("Used");
   const [output, setOutput] = useState("");
 
+  const [monthlyPayment, setMonthlyPayment] = useState("");
+  const [dueAtSigning, setDueAtSigning] = useState("");
+  const [leaseTerm, setLeaseTerm] = useState("");
+  const [annualMiles, setAnnualMiles] = useState("");
+  const [leaseNotes, setLeaseNotes] = useState("");
+
   useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
-  const data = params.get("data");
+    const params = new URLSearchParams(window.location.search);
+    const data = params.get("data");
 
-  if (data) {
-    const decoded = decodeURIComponent(data);
-    setVehicleData(decoded);
-
-    try {
-      const car = JSON.parse(decoded);
-
-      const listing = `
-${type.toUpperCase()} MARKETPLACE LISTING
-
-${car.title || "Vehicle Listing"}
-
-Price: ${car.price || "Contact for price"}
-VIN: ${car.vin || "Available upon request"}
-
-Details:
-${car.description || ""}
-
-Vehicle URL:
-${car.url || ""}
-
-${car.image ? `Photo: ${car.image}` : ""}
-
-Message for pricing, availability, and test drive scheduling.
-`;
-
-      setOutput(listing);
-    } catch {
-      setOutput("Could not read vehicle data.");
+    if (data) {
+      const decoded = decodeURIComponent(data);
+      setVehicleData(decoded);
     }
-  }
-}, []);
+  }, []);
+
+  const cleanDescription = (text = "") => {
+    return text
+      .replace(/Visit Norm Reeves Genesis of Cerritos.*$/i, "")
+      .replace(/#\S+/g, "")
+      .trim();
+  };
+
+  const getVehicleName = (car) => {
+    return car.title || "Vehicle Listing";
+  };
 
   const generate = () => {
     let car = {};
@@ -50,30 +40,76 @@ Message for pricing, availability, and test drive scheduling.
     try {
       car = JSON.parse(vehicleData);
     } catch {
-      setOutput("Could not read vehicle data. Make sure the bookmarklet copied valid data.");
+      setOutput("Could not read vehicle data. Make sure the bookmarklet pasted valid vehicle data.");
       return;
     }
 
-    const listing = `
-${type.toUpperCase()} MARKETPLACE LISTING
+    const vehicleName = getVehicleName(car);
+    const description = cleanDescription(car.description);
+    const price = car.price || "Message for price";
+    const vin = car.vin || "Available upon request";
+    const url = car.url || "";
 
-${car.title || "Vehicle Listing"}
+    let listing = "";
 
-Price: ${car.price || "Contact for price"}
-VIN: ${car.vin || "Available upon request"}
+    if (type === "New") {
+      listing = `
+NEW VEHICLE LEASE SPECIAL
+
+${vehicleName}
+
+Lease Example:
+💰 Payment: ${monthlyPayment || "Message for current payment"}
+📄 Term: ${leaseTerm || "See current offer details"}
+💵 Due at Signing: ${dueAtSigning || "Message for current due at signing"}
+🛣️ Miles: ${annualMiles || "See current offer details"}
+
+Vehicle Info:
+${description}
+
+VIN: ${vin}
+
+${leaseNotes ? `Notes:\n${leaseNotes}\n` : ""}
+
+Message me for current availability, approval requirements, taxes, fees, and updated incentives.
+
+Lease example is for informational purposes only. Terms, eligibility, taxes, fees, approval, and availability may vary.
+`;
+    } else if (type === "CPO") {
+      listing = `
+CERTIFIED PRE-OWNED MARKETPLACE LISTING
+
+${vehicleName}
+
+💰 Price: ${price}
+VIN: ${vin}
 
 Details:
-${car.description || ""}
+${description}
 
-Vehicle URL:
-${car.url || ""}
+This vehicle is available now. Message me directly for availability, pricing, and test drive scheduling.
 
-${car.image ? `Photo: ${car.image}` : ""}
-
-Message for pricing, availability, and test drive scheduling.
+${url ? `Vehicle link available upon request.` : ""}
 `;
+    } else {
+      listing = `
+USED MARKETPLACE LISTING
 
-    setOutput(listing);
+${vehicleName}
+
+💰 Price: ${price}
+VIN: ${vin}
+
+Details:
+${description}
+
+This vehicle is available now. Message me directly for availability, pricing, and test drive scheduling.
+
+${url ? `Vehicle link available upon request.` : ""}
+`;
+    }
+
+    setOutput(listing.trim());
   };
 
   return (
@@ -81,13 +117,13 @@ Message for pricing, availability, and test drive scheduling.
       <h1 className="text-4xl font-semibold mb-2">Generate Listing</h1>
 
       <p className="text-gray-500 mb-8">
-        Paste vehicle data or use the Listly bookmarklet.
+        Use the Listly bookmarklet, choose New / Used / CPO, then generate a Marketplace-ready listing.
       </p>
 
       <div className="bg-white p-6 rounded-2xl border space-y-4">
         <textarea
-          className="w-full p-4 border rounded-xl h-48"
-          placeholder="Vehicle data will appear here..."
+          className="w-full p-4 border rounded-xl h-44"
+          placeholder="Vehicle data from Listly bookmarklet will appear here..."
           value={vehicleData}
           onChange={(e) => setVehicleData(e.target.value)}
         />
@@ -105,6 +141,45 @@ Message for pricing, availability, and test drive scheduling.
             </button>
           ))}
         </div>
+
+        {type === "New" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-gray-50 p-4 rounded-xl border">
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Monthly payment, e.g. $199/mo + tax"
+              value={monthlyPayment}
+              onChange={(e) => setMonthlyPayment(e.target.value)}
+            />
+
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Due at signing, e.g. $3,999"
+              value={dueAtSigning}
+              onChange={(e) => setDueAtSigning(e.target.value)}
+            />
+
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Lease term, e.g. 24 months"
+              value={leaseTerm}
+              onChange={(e) => setLeaseTerm(e.target.value)}
+            />
+
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Annual miles, e.g. 7,500 miles/year"
+              value={annualMiles}
+              onChange={(e) => setAnnualMiles(e.target.value)}
+            />
+
+            <textarea
+              className="p-3 border rounded-xl md:col-span-2 h-24"
+              placeholder="Optional lease notes, approved credit, taxes/fees, stock limitations, etc."
+              value={leaseNotes}
+              onChange={(e) => setLeaseNotes(e.target.value)}
+            />
+          </div>
+        )}
 
         <button
           onClick={generate}
