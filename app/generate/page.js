@@ -30,10 +30,6 @@ export default function Page() {
       .trim();
   };
 
-  const getVehicleName = (car) => {
-    return car.title || "Vehicle Listing";
-  };
-
   const generate = () => {
     let car = {};
 
@@ -44,68 +40,68 @@ export default function Page() {
       return;
     }
 
-    const vehicleName = getVehicleName(car);
+    const vehicleName = car.title || "Vehicle Listing";
     const description = cleanDescription(car.description);
     const price = car.price || "Message for price";
     const vin = car.vin || "Available upon request";
-    const url = car.url || "";
+
+    const mileage = car.mileage || "Ask for current mileage";
+    const exterior = car.exterior || "Ask for exterior color";
+    const interior = car.interior || "Ask for interior color";
+    const drivetrain = car.drivetrain || "";
+    const transmission = car.transmission || "";
+    const engine = car.engine || "";
 
     let listing = "";
 
     if (type === "New") {
       listing = `
-NEW VEHICLE LEASE SPECIAL
+NEW GENESIS LEASE SPECIAL
 
 ${vehicleName}
 
 Lease Example:
-💰 Payment: ${monthlyPayment || "Message for current payment"}
+💰 ${monthlyPayment || "Message for current monthly payment"}
 📄 Term: ${leaseTerm || "See current offer details"}
 💵 Due at Signing: ${dueAtSigning || "Message for current due at signing"}
-🛣️ Miles: ${annualMiles || "See current offer details"}
+🛣️ Miles: ${annualMiles || "See current mileage allowance"}
 
-Vehicle Info:
-${description}
-
+Vehicle Details:
+Exterior: ${exterior}
+Interior: ${interior}
+Drivetrain: ${drivetrain || "See vehicle details"}
+Transmission: ${transmission || "See vehicle details"}
+Engine: ${engine || "See vehicle details"}
 VIN: ${vin}
 
-${leaseNotes ? `Notes:\n${leaseNotes}\n` : ""}
+${leaseNotes ? `Additional Notes:\n${leaseNotes}\n` : ""}
 
-Message me for current availability, approval requirements, taxes, fees, and updated incentives.
+Message me directly for current availability, approval requirements, taxes, fees, and updated incentives.
 
 Lease example is for informational purposes only. Terms, eligibility, taxes, fees, approval, and availability may vary.
 `;
-    } else if (type === "CPO") {
-      listing = `
-CERTIFIED PRE-OWNED MARKETPLACE LISTING
-
-${vehicleName}
-
-💰 Price: ${price}
-VIN: ${vin}
-
-Details:
-${description}
-
-This vehicle is available now. Message me directly for availability, pricing, and test drive scheduling.
-
-${url ? `Vehicle link available upon request.` : ""}
-`;
     } else {
       listing = `
-USED MARKETPLACE LISTING
+${type.toUpperCase()} MARKETPLACE LISTING
 
 ${vehicleName}
 
 💰 Price: ${price}
+🛣️ Mileage: ${mileage}
+🎨 Exterior: ${exterior}
+🪑 Interior: ${interior}
 VIN: ${vin}
 
-Details:
-${description}
+Vehicle Details:
+${drivetrain ? `Drivetrain: ${drivetrain}` : ""}
+${transmission ? `Transmission: ${transmission}` : ""}
+${engine ? `Engine: ${engine}` : ""}
 
-This vehicle is available now. Message me directly for availability, pricing, and test drive scheduling.
+${description ? `Description:\n${description}` : ""}
 
-${url ? `Vehicle link available upon request.` : ""}
+This vehicle is available now. Message me directly for availability, pricing, financing options, and test drive scheduling.
+
+Serious inquiries welcome.
 `;
     }
 
@@ -174,7 +170,7 @@ ${url ? `Vehicle link available upon request.` : ""}
 
             <textarea
               className="p-3 border rounded-xl md:col-span-2 h-24"
-              placeholder="Optional lease notes, approved credit, taxes/fees, stock limitations, etc."
+              placeholder="Optional lease notes, approval, taxes/fees, stock limitations, etc."
               value={leaseNotes}
               onChange={(e) => setLeaseNotes(e.target.value)}
             />
