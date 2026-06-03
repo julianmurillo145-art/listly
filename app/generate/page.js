@@ -156,8 +156,6 @@ Paying cash is welcome, and I can also help with financing options if needed.
 
 If you have any questions about the vehicle or would like to schedule a test drive, send me a message and I'll be happy to assist.
 
-
-
 ⭐ Check out my yelp reviews:
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
     }
