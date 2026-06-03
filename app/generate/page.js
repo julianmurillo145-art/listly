@@ -139,54 +139,56 @@ If you have any questions about the vehicle or would like to schedule a test dri
   };
 
   const downloadAllPhotos = async () => {
-    const car = carInfo || parseVehicleData();
-    const photos = car?.photos || [];
+  const car = carInfo || parseVehicleData();
+  const photos = car?.photos || [];
 
-    if (!photos.length) {
-      alert("No photos found.");
-      return;
-    }
+  if (!photos.length) {
+    alert("No photos found.");
+    return;
+  }
 
-    const zip = new JSZip();
-    const folder = zip.folder(car.vin || "vehicle-photos");
+  const res = await fetch("/api/photos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      photos,
+      vin: car.vin || "vehicle-photos",
+    }),
+  });
 
-    for (let i = 0; i < photos.length; i++) {
-      try {
-        const response = await fetch(photos[i], { mode: "cors" });
+  if (!res.ok) {
+    alert("Could not download photos.");
+    return;
+  }
 
-if (!response.ok) {
-  console.log("Photo failed:", photos[i], response.status);
-  continue;
-}
+  const blob = await res.blob();
+  const url = window.URL.createObjectURL(blob);
 
-const blob = await response.blob();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${car.vin || "vehicle-photos"}.zip`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
 
-if (blob.size > 0) {
-  folder.file(`photo-${String(i + 1).padStart(2, "0")}.jpg`, blob);
-}
-      } catch {
-        console.log("Failed photo:", photos[i]);
-      }
-    }
-
-    const content = await zip.generateAsync({ type: "blob" });
-    saveAs(content, `${car.vin || "vehicle-photos"}.zip`);
-  };
-
-  const copyListing = async () => {
-    try {
-      await navigator.clipboard.writeText(output);
-      alert("Listing copied!");
-    } catch {
-      const textArea = document.createElement("textarea");
-      textArea.value = output;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-      alert("Listing copied!");
-    }
-  };
+  window.URL.revokeObjectURL(url);
+}; 
+    const copyListing = async () => {
+  try {
+    await navigator.clipboard.writeText(output);
+    alert("Listing copied!");
+  } catch {
+    const textArea = document.createElement("textarea");
+    textArea.value = output;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    alert("Listing copied!");
+  }
+};
 
   return (
     <div className="max-w-4xl mx-auto p-6">
