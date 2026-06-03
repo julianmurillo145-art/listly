@@ -152,7 +152,7 @@ ${description ? `Description:\n${description}\n` : ""}
 
 Price listed is before tax, title, registration, and applicable fees.
 
-Cash and finance buyers are both welcome.
+Paying cash is welcome, and I can also help with financing options if needed.
 
 If you have any questions about the vehicle or would like to schedule a test drive, send me a message and I'll be happy to assist.
 
