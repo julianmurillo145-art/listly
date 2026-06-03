@@ -162,7 +162,26 @@ If you have any questions about the vehicle or would like to schedule a test dri
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
     }
 
-    setOutput(listing.trim());
+    const finalListing = listing.trim();
+
+setOutput(finalListing);
+
+const history = JSON.parse(
+  localStorage.getItem("listly_history") || "[]"
+);
+
+history.unshift({
+  title: vehicleName,
+  vin,
+  type,
+  listing: finalListing,
+  createdAt: new Date().toISOString(),
+});
+
+localStorage.setItem(
+  "listly_history",
+  JSON.stringify(history)
+);
   };
 
   const copyPhotoLinks = async () => {

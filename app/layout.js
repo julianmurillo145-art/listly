@@ -20,12 +20,7 @@ export default function RootLayout({ children }) {
 
             <nav className="space-y-2 text-sm">
 
-  <a
-    href="/"
-    className="block px-3 py-2 rounded-lg text-black hover:bg-gray-100"
-  >
-    Dashboard
-  </a>
+  
 
   <a
     href="/generate"
@@ -41,12 +36,7 @@ export default function RootLayout({ children }) {
     History
   </a>
 
-  <a
-    href="/settings"
-    className="block px-3 py-2 rounded-lg text-black hover:bg-gray-100"
-  >
-    Settings
-  </a>
+  
 
 </nav>
           </aside>
