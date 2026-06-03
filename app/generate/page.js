@@ -1,47 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [url, setUrl] = useState("");
-  const [source, setSource] = useState("");
+  const [vehicleData, setVehicleData] = useState("");
   const [type, setType] = useState("Used");
   const [output, setOutput] = useState("");
 
-  const extractMeta = (html, name) => {
-    const regex = new RegExp(`<meta[^>]+(?:name|property)=["']${name}["'][^>]+content=["']([^"']+)["']`, "i");
-    return html.match(regex)?.[1] || "";
-  };
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const data = params.get("data");
+
+    if (data) {
+      const decoded = decodeURIComponent(data);
+      setVehicleData(decoded);
+    }
+  }, []);
 
   const generate = () => {
-    const title =
-      extractMeta(source, "og:title") ||
-      "Vehicle Listing";
+    let car = {};
 
-    const description =
-      extractMeta(source, "description") ||
-      extractMeta(source, "og:description") ||
-      "";
-
-    const image =
-      extractMeta(source, "og:image");
-
-    const price = description.match(/\$[\d,]+/)?.[0] || "Contact for price";
+    try {
+      car = JSON.parse(vehicleData);
+    } catch {
+      setOutput("Could not read vehicle data. Make sure the bookmarklet copied valid data.");
+      return;
+    }
 
     const listing = `
 ${type.toUpperCase()} MARKETPLACE LISTING
 
-${title}
+${car.title || "Vehicle Listing"}
 
-Price: ${price}
+Price: ${car.price || "Contact for price"}
+VIN: ${car.vin || "Available upon request"}
 
 Details:
-${description}
+${car.description || ""}
 
 Vehicle URL:
-${url}
+${car.url || ""}
 
-${image ? `Photo: ${image}` : ""}
+${car.image ? `Photo: ${car.image}` : ""}
 
 Message for pricing, availability, and test drive scheduling.
 `;
@@ -54,22 +54,15 @@ Message for pricing, availability, and test drive scheduling.
       <h1 className="text-4xl font-semibold mb-2">Generate Listing</h1>
 
       <p className="text-gray-500 mb-8">
-        Paste the vehicle URL and page source to generate a Marketplace-ready listing.
+        Paste vehicle data or use the Listly bookmarklet.
       </p>
 
       <div className="bg-white p-6 rounded-2xl border space-y-4">
-        <input
-          className="w-full p-4 border rounded-xl"
-          placeholder="Paste vehicle URL..."
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-
         <textarea
           className="w-full p-4 border rounded-xl h-48"
-          placeholder="Paste page source here..."
-          value={source}
-          onChange={(e) => setSource(e.target.value)}
+          placeholder="Vehicle data will appear here..."
+          value={vehicleData}
+          onChange={(e) => setVehicleData(e.target.value)}
         />
 
         <div className="flex gap-2">
