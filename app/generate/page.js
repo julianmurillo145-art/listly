@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import JSZip from "jszip";
-import { saveAs } from "file-saver";
 
 export default function Page() {
   const [vehicleData, setVehicleData] = useState("");
@@ -39,14 +37,6 @@ export default function Page() {
       .trim();
   };
 
-  const buildHighlights = (car) => {
-    const highlights = [];
-    if (car.drivetrain) highlights.push(car.drivetrain);
-    if (car.transmission) highlights.push(car.transmission);
-    if (car.engine) highlights.push(car.engine);
-    return highlights;
-  };
-
   const parseVehicleData = () => {
     try {
       const car = JSON.parse(vehicleData);
@@ -58,6 +48,25 @@ export default function Page() {
     }
   };
 
+  const buildVehicleHighlights = (car) => {
+    const highlights = [];
+    if (car.drivetrain) highlights.push(car.drivetrain);
+    if (car.transmission) highlights.push(car.transmission);
+    if (car.engine) highlights.push(car.engine);
+    return highlights;
+  };
+
+  const buildKeyFeatures = (car) => {
+    const features = Array.isArray(car.features) ? car.features : [];
+
+    if (!features.length) return "";
+
+    return `⭐ Key Features:
+${features.slice(0, 14).map((feature) => `✅ ${feature}`).join("\n")}
+
+`;
+  };
+
   const generate = () => {
     const car = parseVehicleData();
     if (!car) return;
@@ -66,11 +75,12 @@ export default function Page() {
     const description = cleanDescription(car.description);
     const price = car.price || "Message for price";
     const vin = car.vin || "Available upon request";
-
     const mileage = car.mileage || "Ask for current mileage";
     const exterior = car.exterior || "Ask for exterior color";
     const interior = car.interior || "Ask for interior color";
-    const highlights = buildHighlights(car);
+
+    const highlights = buildVehicleHighlights(car);
+    const featureBlock = buildKeyFeatures(car);
 
     let listing = "";
 
@@ -91,6 +101,8 @@ Vehicle Details:
 🪑 Interior: ${interior}
 VIN: ${vin}
 
+${featureBlock}
+
 ${highlights.length ? `Highlights:\n${highlights.map((item) => `✅ ${item}`).join("\n")}\n` : ""}
 
 ${leaseNotes ? `Additional Notes:\n${leaseNotes}\n` : ""}
@@ -109,6 +121,8 @@ ${vehicleName}
 🛣️ Mileage: ${mileage}
 🎨 Exterior: ${exterior}
 🪑 Interior: ${interior}
+
+${featureBlock}
 
 ${highlights.length ? `Highlights:\n${highlights.map((item) => `✅ ${item}`).join("\n")}\n` : ""}
 
@@ -139,56 +153,57 @@ If you have any questions about the vehicle or would like to schedule a test dri
   };
 
   const downloadAllPhotos = async () => {
-  const car = carInfo || parseVehicleData();
-  const photos = car?.photos || [];
+    const car = carInfo || parseVehicleData();
+    const photos = car?.photos || [];
 
-  if (!photos.length) {
-    alert("No photos found.");
-    return;
-  }
+    if (!photos.length) {
+      alert("No photos found.");
+      return;
+    }
 
-  const res = await fetch("/api/photos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      photos,
-      vin: car.vin || "vehicle-photos",
-    }),
-  });
+    const res = await fetch("/api/photos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        photos,
+        vin: car.vin || "vehicle-photos",
+      }),
+    });
 
-  if (!res.ok) {
-    alert("Could not download photos.");
-    return;
-  }
+    if (!res.ok) {
+      alert("Could not download photos.");
+      return;
+    }
 
-  const blob = await res.blob();
-  const url = window.URL.createObjectURL(blob);
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `${car.vin || "vehicle-photos"}.zip`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${car.vin || "vehicle-photos"}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
 
-  window.URL.revokeObjectURL(url);
-}; 
-    const copyListing = async () => {
-  try {
-    await navigator.clipboard.writeText(output);
-    alert("Listing copied!");
-  } catch {
-    const textArea = document.createElement("textarea");
-    textArea.value = output;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-    alert("Listing copied!");
-  }
-};
+    window.URL.revokeObjectURL(url);
+  };
+
+  const copyListing = async () => {
+    try {
+      await navigator.clipboard.writeText(output);
+      alert("Listing copied!");
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = output;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      alert("Listing copied!");
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -253,15 +268,47 @@ If you have any questions about the vehicle or would like to schedule a test dri
 
         {type === "New" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-gray-50 p-4 rounded-xl border">
-            <input className="p-3 border rounded-xl" placeholder="Monthly payment, e.g. $199/mo + tax" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} />
-            <input className="p-3 border rounded-xl" placeholder="Due at signing, e.g. $3,999" value={dueAtSigning} onChange={(e) => setDueAtSigning(e.target.value)} />
-            <input className="p-3 border rounded-xl" placeholder="Lease term, e.g. 24 months" value={leaseTerm} onChange={(e) => setLeaseTerm(e.target.value)} />
-            <input className="p-3 border rounded-xl" placeholder="Annual miles, e.g. 7,500 miles/year" value={annualMiles} onChange={(e) => setAnnualMiles(e.target.value)} />
-            <textarea className="p-3 border rounded-xl md:col-span-2 h-24" placeholder="Optional lease notes, approval, taxes/fees, stock limitations, etc." value={leaseNotes} onChange={(e) => setLeaseNotes(e.target.value)} />
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Monthly payment, e.g. $199/mo + tax"
+              value={monthlyPayment}
+              onChange={(e) => setMonthlyPayment(e.target.value)}
+            />
+
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Due at signing, e.g. $3,999"
+              value={dueAtSigning}
+              onChange={(e) => setDueAtSigning(e.target.value)}
+            />
+
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Lease term, e.g. 24 months"
+              value={leaseTerm}
+              onChange={(e) => setLeaseTerm(e.target.value)}
+            />
+
+            <input
+              className="p-3 border rounded-xl"
+              placeholder="Annual miles, e.g. 7,500 miles/year"
+              value={annualMiles}
+              onChange={(e) => setAnnualMiles(e.target.value)}
+            />
+
+            <textarea
+              className="p-3 border rounded-xl md:col-span-2 h-24"
+              placeholder="Optional lease notes, approval, taxes/fees, stock limitations, etc."
+              value={leaseNotes}
+              onChange={(e) => setLeaseNotes(e.target.value)}
+            />
           </div>
         )}
 
-        <button onClick={generate} className="w-full bg-black text-white p-4 rounded-xl">
+        <button
+          onClick={generate}
+          className="w-full bg-black text-white p-4 rounded-xl"
+        >
           Generate Marketplace Listing
         </button>
       </div>
@@ -271,7 +318,10 @@ If you have any questions about the vehicle or would like to schedule a test dri
           <div className="flex justify-between items-center mb-3">
             <h2 className="font-semibold">Generated Listing</h2>
 
-            <button onClick={copyListing} className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90">
+            <button
+              onClick={copyListing}
+              className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90"
+            >
               Copy
             </button>
           </div>
