@@ -170,7 +170,9 @@ const history = JSON.parse(
   localStorage.getItem("listly_history") || "[]"
 );
 
-history.unshift({
+const updatedHistory = history.filter((item) => item.vin !== vin);
+
+updatedHistory.unshift({
   title: vehicleName,
   vin,
   price,
@@ -182,7 +184,7 @@ history.unshift({
 
 localStorage.setItem(
   "listly_history",
-  JSON.stringify(history)
+  JSON.stringify(updatedHistory)
 );
   };
 
