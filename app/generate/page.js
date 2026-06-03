@@ -166,6 +166,9 @@ https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
 
 setOutput(finalListing);
 
+navigator.clipboard.writeText(finalListing);
+alert("Listing generated and copied!");
+
 const history = JSON.parse(
   localStorage.getItem("listly_history") || "[]"
 );
