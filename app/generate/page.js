@@ -30,6 +30,16 @@ export default function Page() {
       .trim();
   };
 
+  const buildHighlights = (car) => {
+    const highlights = [];
+
+    if (car.drivetrain) highlights.push(car.drivetrain);
+    if (car.transmission) highlights.push(car.transmission);
+    if (car.engine) highlights.push(car.engine);
+
+    return highlights;
+  };
+
   const generate = () => {
     let car = {};
 
@@ -48,9 +58,7 @@ export default function Page() {
     const mileage = car.mileage || "Ask for current mileage";
     const exterior = car.exterior || "Ask for exterior color";
     const interior = car.interior || "Ask for interior color";
-    const drivetrain = car.drivetrain || "";
-    const transmission = car.transmission || "";
-    const engine = car.engine || "";
+    const highlights = buildHighlights(car);
 
     let listing = "";
 
@@ -67,12 +75,11 @@ Lease Example:
 🛣️ Miles: ${annualMiles || "See current mileage allowance"}
 
 Vehicle Details:
-Exterior: ${exterior}
-Interior: ${interior}
-Drivetrain: ${drivetrain || "See vehicle details"}
-Transmission: ${transmission || "See vehicle details"}
-Engine: ${engine || "See vehicle details"}
+🎨 Exterior: ${exterior}
+🪑 Interior: ${interior}
 VIN: ${vin}
+
+${highlights.length ? `Highlights:\n${highlights.map((item) => `✅ ${item}`).join("\n")}\n` : ""}
 
 ${leaseNotes ? `Additional Notes:\n${leaseNotes}\n` : ""}
 
@@ -90,18 +97,18 @@ ${vehicleName}
 🛣️ Mileage: ${mileage}
 🎨 Exterior: ${exterior}
 🪑 Interior: ${interior}
+
+${highlights.length ? `Highlights:\n${highlights.map((item) => `✅ ${item}`).join("\n")}\n` : ""}
+
 VIN: ${vin}
 
-Vehicle Details:
-${drivetrain ? `Drivetrain: ${drivetrain}` : ""}
-${transmission ? `Transmission: ${transmission}` : ""}
-${engine ? `Engine: ${engine}` : ""}
+${description ? `Description:\n${description}\n` : ""}
 
-${description ? `Description:\n${description}` : ""}
+Price listed is before tax, title, registration, and applicable fees.
 
-This vehicle is available now. Message me directly for availability, pricing, financing options, and test drive scheduling.
+Cash and finance buyers are both welcome.
 
-Serious inquiries welcome.
+If you have any questions about the vehicle or would like to schedule a test drive, send me a message and I'll be happy to assist.
 `;
     }
 
