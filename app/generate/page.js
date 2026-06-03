@@ -152,9 +152,18 @@ If you have any questions about the vehicle or would like to schedule a test dri
 
     for (let i = 0; i < photos.length; i++) {
       try {
-        const response = await fetch(photos[i]);
-        const blob = await response.blob();
-        folder.file(`photo-${String(i + 1).padStart(2, "0")}.jpg`, blob);
+        const response = await fetch(photos[i], { mode: "cors" });
+
+if (!response.ok) {
+  console.log("Photo failed:", photos[i], response.status);
+  continue;
+}
+
+const blob = await response.blob();
+
+if (blob.size > 0) {
+  folder.file(`photo-${String(i + 1).padStart(2, "0")}.jpg`, blob);
+}
       } catch {
         console.log("Failed photo:", photos[i]);
       }
