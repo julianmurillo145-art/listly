@@ -197,12 +197,25 @@ If you have any questions about the vehicle or would like to schedule a test dri
           <div className="flex justify-between items-center mb-3">
             <h2 className="font-semibold">Generated Listing</h2>
 
-            <button
-              onClick={() => navigator.clipboard.writeText(output)}
-              className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90"
-            >
-              Copy
-            </button>
+           <button
+  onClick={async () => {
+    try {
+      await navigator.clipboard.writeText(output);
+      alert("Listing copied!");
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = output;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      alert("Listing copied!");
+    }
+  }}
+  className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90"
+>
+  Copy
+</button>
           </div>
 
           <pre className="whitespace-pre-wrap text-sm text-gray-700">
