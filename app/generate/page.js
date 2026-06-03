@@ -8,14 +8,41 @@ export default function Page() {
   const [output, setOutput] = useState("");
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const data = params.get("data");
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get("data");
 
-    if (data) {
-      const decoded = decodeURIComponent(data);
-      setVehicleData(decoded);
+  if (data) {
+    const decoded = decodeURIComponent(data);
+    setVehicleData(decoded);
+
+    try {
+      const car = JSON.parse(decoded);
+
+      const listing = `
+${type.toUpperCase()} MARKETPLACE LISTING
+
+${car.title || "Vehicle Listing"}
+
+Price: ${car.price || "Contact for price"}
+VIN: ${car.vin || "Available upon request"}
+
+Details:
+${car.description || ""}
+
+Vehicle URL:
+${car.url || ""}
+
+${car.image ? `Photo: ${car.image}` : ""}
+
+Message for pricing, availability, and test drive scheduling.
+`;
+
+      setOutput(listing);
+    } catch {
+      setOutput("Could not read vehicle data.");
     }
-  }, []);
+  }
+}, []);
 
   const generate = () => {
     let car = {};
