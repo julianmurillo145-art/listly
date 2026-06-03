@@ -156,9 +156,9 @@ Cash and finance buyers are both welcome.
 
 If you have any questions about the vehicle or would like to schedule a test drive, send me a message and I'll be happy to assist.
 
-Check out our customer reviews:
 
-⭐ Yelp Reviews:
+
+⭐ Check out my yelp reviews:
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
     }
 
