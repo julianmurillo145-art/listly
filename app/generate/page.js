@@ -37,6 +37,16 @@ export default function Page() {
       .trim();
   };
 
+  const titleCase = (text = "") => {
+    return text
+      .toLowerCase()
+      .replace(/\b\w/g, (c) => c.toUpperCase())
+      .replace("Awd", "AWD")
+      .replace("Fwd", "FWD")
+      .replace("Rwd", "RWD")
+      .replace("Ev", "EV");
+  };
+
   const parseVehicleData = () => {
     try {
       const car = JSON.parse(vehicleData);
@@ -48,12 +58,19 @@ export default function Page() {
     }
   };
 
-  const buildVehicleHighlights = (car) => {
-    const highlights = [];
-    if (car.drivetrain) highlights.push(car.drivetrain);
-    if (car.transmission) highlights.push(car.transmission);
-    if (car.engine) highlights.push(car.engine);
-    return highlights;
+  const buildPowertrain = (car) => {
+    const items = [];
+
+    if (car.drivetrain) items.push(car.drivetrain);
+    if (car.transmission) items.push(car.transmission);
+    if (car.engine) items.push(car.engine);
+
+    if (!items.length) return "";
+
+    return `Powertrain:
+${items.map((item) => `✅ ${item}`).join("\n")}
+
+`;
   };
 
   const buildKeyFeatures = (car) => {
@@ -62,7 +79,10 @@ export default function Page() {
     if (!features.length) return "";
 
     return `⭐ Key Features:
-${features.slice(0, 14).map((feature) => `✅ ${feature}`).join("\n")}
+${features
+  .slice(0, 14)
+  .map((feature) => `✅ ${titleCase(feature)}`)
+  .join("\n")}
 
 `;
   };
@@ -79,8 +99,8 @@ ${features.slice(0, 14).map((feature) => `✅ ${feature}`).join("\n")}
     const exterior = car.exterior || "Ask for exterior color";
     const interior = car.interior || "Ask for interior color";
 
-    const highlights = buildVehicleHighlights(car);
     const featureBlock = buildKeyFeatures(car);
+    const powertrainBlock = buildPowertrain(car);
 
     let listing = "";
 
@@ -103,7 +123,7 @@ VIN: ${vin}
 
 ${featureBlock}
 
-${highlights.length ? `Highlights:\n${highlights.map((item) => `✅ ${item}`).join("\n")}\n` : ""}
+${powertrainBlock}
 
 ${leaseNotes ? `Additional Notes:\n${leaseNotes}\n` : ""}
 
@@ -124,7 +144,7 @@ ${vehicleName}
 
 ${featureBlock}
 
-${highlights.length ? `Highlights:\n${highlights.map((item) => `✅ ${item}`).join("\n")}\n` : ""}
+${powertrainBlock}
 
 VIN: ${vin}
 
