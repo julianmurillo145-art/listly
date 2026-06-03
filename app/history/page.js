@@ -63,9 +63,9 @@ export default function Page() {
                 {item.title || "Vehicle Listing"}
               </h2>
 
-              <p className="text-sm text-gray-500 mb-2">
-                {item.type}
-              </p>
+              <p className="text-sm text-gray-500 mb-3">
+  {item.price || "No price"} • {item.type} • VIN {item.vin?.slice(-6) || "N/A"}
+</p>
 
               <div className="flex gap-2">
                 <button

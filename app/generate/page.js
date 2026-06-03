@@ -173,6 +173,7 @@ const history = JSON.parse(
 history.unshift({
   title: vehicleName,
   vin,
+  price,
   type,
   listing: finalListing,
   createdAt: new Date().toISOString(),
