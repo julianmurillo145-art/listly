@@ -64,7 +64,7 @@ export default function Page() {
               </h2>
 
               <p className="text-sm text-gray-500 mb-3">
-  {item.price || "No price"} • {item.type} • VIN {item.vin?.slice(-6) || "N/A"}
+  {item.price || "No price"} • {item.mileage || "N/A"} mi • {item.type} • VIN {item.vin?.slice(-6) || "N/A"}
 </p>
 
               <div className="flex gap-2">

@@ -174,6 +174,7 @@ history.unshift({
   title: vehicleName,
   vin,
   price,
+  mileage,
   type,
   listing: finalListing,
   createdAt: new Date().toISOString(),
