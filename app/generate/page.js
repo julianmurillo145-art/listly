@@ -276,28 +276,46 @@ localStorage.setItem(
         />
 
         {carInfo?.photos?.length > 0 && (
-          <div className="bg-gray-50 border rounded-xl p-4">
-            <p className="font-semibold mb-3">
-              Photos Found: {carInfo.photos.length}
-            </p>
+  <div className="bg-gray-50 border rounded-xl p-4">
+    <p className="font-semibold mb-3">
+      Photos Found: {carInfo.photos.length}
+    </p>
 
-            <div className="flex gap-2">
-              <button
-                onClick={downloadAllPhotos}
-                className="px-4 py-2 rounded-lg bg-black text-white"
-              >
-                Download All Photos
-              </button>
+    <div className="flex gap-2 mb-4">
+      <button
+        onClick={downloadAllPhotos}
+        className="px-4 py-2 rounded-lg bg-black text-white"
+      >
+        Download All Photos
+      </button>
 
-              <button
-                onClick={copyPhotoLinks}
-                className="px-4 py-2 rounded-lg border bg-white text-black"
-              >
-                Copy Photo Links
-              </button>
-            </div>
-          </div>
-        )}
+      <button
+        onClick={copyPhotoLinks}
+        className="px-4 py-2 rounded-lg border bg-white text-black"
+      >
+        Copy Photo Links
+      </button>
+    </div>
+
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-96 overflow-y-auto">
+      {carInfo.photos.map((photo, index) => (
+        <a
+          key={index}
+          href={photo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <img
+            src={photo}
+            alt={`Vehicle photo ${index + 1}`}
+            className="w-full h-28 object-cover rounded-lg border bg-white"
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+)}
 
         <div className="flex gap-2">
           {["New", "Used", "CPO"].map((t) => (
