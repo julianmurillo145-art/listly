@@ -179,6 +179,7 @@ updatedHistory.unshift({
   mileage,
   type,
   listing: finalListing,
+  photos: car.photos || [],
   createdAt: new Date().toISOString(),
 });
 
