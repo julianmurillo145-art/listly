@@ -147,7 +147,14 @@ ${powertrainBlock}
 
 VIN: ${vin}
 
-${description ? `Description:\n${description}\n` : ""}
+Description:
+This ${vehicleName} is clean, well-equipped, and ready for its next owner.
+
+It includes popular features like ${features.slice(0, 5).join(", ")}, and more listed above.
+
+Powered by ${engine} paired with ${transmission}.
+
+Only ${Number(mileage).toLocaleString()} miles.
 
 📲 Call/Text 949-281-8306 or message me here on Facebook.
 
