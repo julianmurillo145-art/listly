@@ -68,9 +68,7 @@ export default function Page() {
     if (!items.length) return "";
 
     return `Powertrain:
-${items.map((item) => `✅ ${item}`).join("\n")}
-
-`;
+${items.map((item) => `✅ ${item}`).join("\n")}`;
   };
 
   const buildKeyFeatures = (car) => {
@@ -143,8 +141,10 @@ ${vehicleName}
 ${featureBlock}
 
 ${powertrainBlock}
-
 VIN: ${vin}
+
+────────────────────
+
 
 Well-maintained and ready for its next owner.
 
