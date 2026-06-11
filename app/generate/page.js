@@ -137,7 +137,7 @@ Lease example is for informational purposes only. Terms, eligibility, taxes, fee
 ${vehicleName}
 
 💰 Price: ${price}
-🛣️ Mileage: ${mileage}
+🛣️ Mileage: ${Number(mileage).toLocaleString()}
 🎨 Exterior: ${exterior}
 🪑 Interior: ${interior}
 
