@@ -154,7 +154,8 @@ CarFax report available upon request.
 
 Price listed is before tax, title, registration, and applicable fees.
 
-Paying cash is welcome, and I can also help with financing options if needed.
+Cash and financing options available.
+
 
 ⭐ Check out my yelp reviews:
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
