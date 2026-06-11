@@ -74,18 +74,17 @@ ${items.map((item) => `✅ ${item}`).join("\n")}
   };
 
   const buildKeyFeatures = (car) => {
-    const features = Array.isArray(car.features) ? car.features : [];
+  const features = Array.isArray(car.features) ? car.features : [];
 
-    if (!features.length) return "";
+  if (!features.length) return "";
 
-    return `⭐ Key Features:
+  return `⭐ Key Features:
 ${features
   .slice(0, 14)
   .map((feature) => `✅ ${titleCase(feature)}`)
   .join("\n")}
-
 `;
-  };
+};
 
   const generate = () => {
     const car = parseVehicleData();
