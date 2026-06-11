@@ -146,19 +146,18 @@ VIN: ${vin}
 
 ────────────────────
 
-Well-maintained and ready for its next owner.
+✅ Well-maintained and ready for its next owner.
 
-CarFax report available upon request.
+📋 CarFax available upon request.
 
 📲 Call/Text 949-281-8306 or message me here on Facebook.
 
-Price listed is before tax, title, registration, and applicable fees.
+💰 Cash and financing options available.
 
-Cash and financing options available.
+⭐ Yelp Reviews:
+https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos
 
-
-⭐ Check out my yelp reviews:
-https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
+Price listed is before tax, title, registration, and applicable fees.`;
     }
 
     const finalListing = listing.trim();
