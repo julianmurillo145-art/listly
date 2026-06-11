@@ -149,12 +149,11 @@ VIN: ${vin}
 
 ${description ? `Description:\n${description}\n` : ""}
 
+📲 Call/Text 949-281-8306 or message me here on Facebook.
+
 Price listed is before tax, title, registration, and applicable fees.
 
 Paying cash is welcome, and I can also help with financing options if needed.
-
-If you have any questions about the vehicle or would like to schedule a test drive, send me a message and I'll be happy to assist.
-
 
 ⭐ Check out my yelp reviews:
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos`;
