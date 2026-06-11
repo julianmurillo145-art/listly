@@ -144,7 +144,6 @@ ${powertrainBlock}
 
 VIN: ${vin}
 
-────────────────────
 
 ✅ Well-maintained and ready for its next owner.
 
