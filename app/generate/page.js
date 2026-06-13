@@ -156,7 +156,7 @@ VIN: ${vin}
 ⭐ Yelp Reviews:
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos
 
-Price listed is before tax, title, registration, and applicable fees.`;
+Price listed is before tax, title, registration, and an $85 doc fee.`;
     }
 
     const finalListing = listing.trim();
