@@ -99,6 +99,16 @@ ${features
     const featureBlock = buildKeyFeatures(car);
     const powertrainBlock = buildPowertrain(car);
 
+    const cpoBlock = car.cpo
+  ? `🏆 Genesis Certified Pre-Owned Benefits:
+✅ 6-Year / 75,000-Mile Limited Warranty*
+✅ 10-Year / 100,000-Mile Powertrain Warranty*
+✅ 5 Years of Roadside Assistance
+✅ 3 Years of Genesis Connected Services
+
+*Coverage calculated from the vehicle's original in-service date.`
+  : "";
+
     let listing = "";
 
     if (type === "New") {
@@ -141,6 +151,8 @@ ${vehicleName}
 ${featureBlock}
 
 ${powertrainBlock}
+
+${cpoBlock}
 
 VIN: ${vin}
 
