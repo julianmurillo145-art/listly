@@ -151,6 +151,8 @@ VIN: ${vin}
 
 📲 Call/Text 949-281-8306 or message me here on Facebook.
 
+🗣️ Se habla español.
+
 💰 Cash and financing options available.
 
 ⭐ Yelp Reviews:
