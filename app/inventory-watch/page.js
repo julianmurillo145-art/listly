@@ -20,10 +20,13 @@ export default function InventoryWatchPage() {
 
     if (data.checkedAt) {
       setReport({
-        checkedAt: new Date(data.checkedAt).toLocaleTimeString([], {
-          hour: "numeric",
-          minute: "2-digit",
-        }),
+        checkedAt: new Date(data.checkedAt).toLocaleString([], {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+}),
         currentCount: data.vehicleCount,
         previousCount: data.vehicleCount,
         priceDrops: [],
