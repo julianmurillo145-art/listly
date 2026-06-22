@@ -1,0 +1,12 @@
+2026/06/21-23:26:02.566 1514 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/06/21-23:26:02.569 1514 Recovering log #51
+2026/06/21-23:26:02.571 1514 Level-0 table #54: started
+2026/06/21-23:26:02.574 1514 Level-0 table #54: 60726 bytes OK
+2026/06/21-23:26:02.574 1514 Recovering log #53
+2026/06/21-23:26:02.575 1514 Reusing old log C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/000053.log 
+2026/06/21-23:26:02.576 1514 Delete type=0 #51
+2026/06/21-23:26:31.534 bc Level-0 table #56: started
+2026/06/21-23:26:31.540 bc Level-0 table #56: 60794 bytes OK
+2026/06/21-23:26:31.542 bc Delete type=0 #53
+2026/06/21-23:26:31.560 1514 Level-0 table #58: started
+2026/06/21-23:26:31.565 1514 Level-0 table #58: 60991 bytes OK

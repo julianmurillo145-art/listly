@@ -35,7 +35,12 @@ export default function RootLayout({ children }) {
   >
     History
   </a>
-
+<a
+  href="/inventory-watch"
+  className="block px-3 py-2 rounded-lg text-black hover:bg-gray-100"
+>
+  Inventory Watch
+</a>
   
 
 </nav>
