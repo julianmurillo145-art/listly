@@ -73,15 +73,46 @@ ${items.map((item) => `✅ ${item}`).join("\n")}`;
 
   const buildKeyFeatures = (car) => {
   const features = Array.isArray(car.features) ? car.features : [];
-
   if (!features.length) return "";
 
-  return `⭐ Key Features:
-${features
-  .slice(0, 14)
-  .map((feature) => `✅ ${titleCase(feature)}`)
-  .join("\n")}
-`;
+  const priority = [
+    "Rubicon",
+    "4WD",
+    "AWD",
+    "Tow Package",
+    "Apple Carplay",
+    "Android Auto",
+    "Adaptive Cruise Control",
+    "Blind Spot Monitor",
+    "Backup Camera",
+    "Navigation",
+    "Leather Seats",
+    "Heated Seats",
+    "Ventilated Seats",
+    "Panoramic Roof",
+    "Sunroof",
+    "Premium Audio",
+    "Heads-Up Display",
+    "Third Row Seating",
+    "Remote Start"
+  ];
+
+  const picked = [];
+
+  priority.forEach((wanted) => {
+    const found = features.find((feature) =>
+      feature.toLowerCase().includes(wanted.toLowerCase())
+    );
+
+    if (found && !picked.includes(found)) picked.push(found);
+  });
+
+  features.forEach((feature) => {
+    if (picked.length < 5 && !picked.includes(feature)) picked.push(feature);
+  });
+
+  return `⭐ Highlights:
+${picked.slice(0, 5).map((feature) => `✅ ${titleCase(feature)}`).join("\n")}`;
 };
 
   const generate = () => {
@@ -141,31 +172,26 @@ Lease example is for informational purposes only. Terms, eligibility, taxes, fee
     } else {
       listing = `
 
-${vehicleName}
+:
 
-💰 Price: ${price}
+🔥 ${vehicleName}
+
 🛣️ Mileage: ${Number(mileage).toLocaleString()}
 🎨 Exterior: ${exterior}
 🪑 Interior: ${interior}
 
 ${featureBlock}
 
-${powertrainBlock}
-
 ${cpoBlock}
 
 VIN: ${vin}
 
-
-✅ Well-maintained and ready for its next owner.
-
-📋 CarFax available upon request.
+📋 Free CarFax available upon request.
 
 📲 Call/Text 949-281-8306 or message me here on Facebook.
-
 🗣️ Se habla español.
 
-💰 Cash and financing options available.
+💳 Cash and financing options available.
 
 ⭐ Yelp Reviews:
 https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos
