@@ -76,26 +76,26 @@ ${items.map((item) => `✅ ${item}`).join("\n")}`;
   if (!features.length) return "";
 
   const priority = [
-    "Rubicon",
-    "4WD",
-    "AWD",
-    "Tow Package",
-    "Apple Carplay",
-    "Android Auto",
-    "Adaptive Cruise Control",
-    "Blind Spot Monitor",
-    "Backup Camera",
-    "Navigation",
-    "Leather Seats",
-    "Heated Seats",
-    "Ventilated Seats",
-    "Panoramic Roof",
-    "Sunroof",
-    "Premium Audio",
-    "Heads-Up Display",
-    "Third Row Seating",
-    "Remote Start"
-  ];
+  "Rubicon",
+  "Tow Package",
+  "4WD",
+  "AWD",
+  "Heads-Up Display",
+  "Panoramic Roof",
+  "Sunroof",
+  "Ventilated Seats",
+  "Heated Seats",
+  "Leather Seats",
+  "Navigation",
+  "Apple Carplay",
+  "Android Auto",
+  "Adaptive Cruise Control",
+  "Blind Spot Monitor",
+  "Backup Camera",
+  "Premium Audio",
+  "Third Row Seating",
+  "Remote Start"
+];
 
   const picked = [];
 
@@ -119,7 +119,15 @@ ${picked.slice(0, 5).map((feature) => `✅ ${titleCase(feature)}`).join("\n")}`;
     const car = parseVehicleData();
     if (!car) return;
 
-    const vehicleName = car.title || "Vehicle Listing";
+    const shortModel = (car.model || "")
+  .replace(/\b(AWD|RWD|FWD|4WD)\b/gi, "")
+  .replace(/\b(Sport Utility|Sedan|Coupe|Convertible|Hatchback|Wagon)\b/gi, "")
+  .replace(/\s+/g, " ")
+  .trim();
+
+const vehicleName =
+  `${car.year} ${car.make} ${shortModel}` +
+  (car.trim ? ` ${car.trim}` : "");
     const description = cleanDescription(car.description);
     const price = car.price || "Message for price";
     const vin = car.vin || "Available upon request";
