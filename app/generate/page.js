@@ -119,15 +119,11 @@ ${picked.slice(0, 5).map((feature) => `✅ ${titleCase(feature)}`).join("\n")}`;
     const car = parseVehicleData();
     if (!car) return;
 
-    const shortModel = (car.model || "")
+    const vehicleName = (car.title || "Vehicle Listing")
   .replace(/\b(AWD|RWD|FWD|4WD)\b/gi, "")
-  .replace(/\b(Sport Utility|Sedan|Coupe|Convertible|Hatchback|Wagon)\b/gi, "")
+  .replace(/\b(Sport Utility|4dr Car|Sedan|Coupe|Convertible|Hatchback|Wagon)\b/gi, "")
   .replace(/\s+/g, " ")
   .trim();
-
-const vehicleName =
-  `${car.year} ${car.make} ${shortModel}` +
-  (car.trim ? ` ${car.trim}` : "");
     const description = cleanDescription(car.description);
     const price = car.price || "Message for price";
     const vin = car.vin || "Available upon request";
