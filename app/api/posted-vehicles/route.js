@@ -3,7 +3,18 @@ import postgres from "postgres";
 const sql = postgres(process.env.DATABASE_URL, {
   ssl: "require",
 });
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
 
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders,
+  });
+}
 async function ensureTable() {
   await sql`
     CREATE TABLE IF NOT EXISTS posted_vehicles (
@@ -24,7 +35,9 @@ export async function GET() {
     ORDER BY posted_at DESC
   `;
 
-  return Response.json(vehicles);
+  return Response.json(vehicles, {
+  headers: corsHeaders,
+});
 }
 
 export async function POST(req) {
@@ -35,7 +48,10 @@ export async function POST(req) {
   const url = body.url || "";
 
   if (!url) {
-    return Response.json({ error: "Missing url" }, { status: 400 });
+    return Response.json(
+  { error: "Missing url" },
+  { status: 400, headers: corsHeaders }
+);
   }
 
   await sql`
@@ -50,5 +66,8 @@ export async function POST(req) {
     ORDER BY posted_at DESC
   `;
 
-  return Response.json({ ok: true, posted: vehicles });
+  return Response.json(
+  { ok: true, posted: vehicles },
+  { headers: corsHeaders }
+);
 }
