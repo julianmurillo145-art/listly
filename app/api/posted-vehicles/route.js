@@ -1,50 +1,54 @@
-import { promises as fs } from "fs";
-import path from "path";
+import postgres from "postgres";
 
-const filePath = path.join(process.cwd(), "app", "data", "posted-vehicles.json");
+const sql = postgres(process.env.DATABASE_URL, {
+  ssl: "require",
+});
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
-
-export async function OPTIONS() {
-  return new Response(null, { status: 204, headers: corsHeaders });
+async function ensureTable() {
+  await sql`
+    CREATE TABLE IF NOT EXISTS posted_vehicles (
+      id SERIAL PRIMARY KEY,
+      vin TEXT UNIQUE,
+      url TEXT UNIQUE NOT NULL,
+      posted_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `;
 }
 
 export async function GET() {
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    return Response.json(JSON.parse(raw || "[]"), { headers: corsHeaders });
-  } catch {
-    return Response.json([], { headers: corsHeaders });
-  }
+  await ensureTable();
+
+  const vehicles = await sql`
+    SELECT vin, url, posted_at AS "postedAt"
+    FROM posted_vehicles
+    ORDER BY posted_at DESC
+  `;
+
+  return Response.json(vehicles);
 }
 
 export async function POST(req) {
+  await ensureTable();
+
   const body = await req.json();
   const vin = body.vin || "";
   const url = body.url || "";
 
-  let posted = [];
-
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    posted = JSON.parse(raw || "[]");
-  } catch {
-    posted = [];
+  if (!url) {
+    return Response.json({ error: "Missing url" }, { status: 400 });
   }
 
-  if (!posted.some((item) => item.vin === vin || item.url === url)) {
-    posted.push({
-      vin,
-      url,
-      postedAt: new Date().toISOString(),
-    });
+  await sql`
+    INSERT INTO posted_vehicles (vin, url)
+    VALUES (${vin}, ${url})
+    ON CONFLICT (url) DO NOTHING
+  `;
 
-    await fs.writeFile(filePath, JSON.stringify(posted, null, 2));
-  }
+  const vehicles = await sql`
+    SELECT vin, url, posted_at AS "postedAt"
+    FROM posted_vehicles
+    ORDER BY posted_at DESC
+  `;
 
-  return Response.json({ ok: true, posted }, { headers: corsHeaders });
+  return Response.json({ ok: true, posted: vehicles });
 }
