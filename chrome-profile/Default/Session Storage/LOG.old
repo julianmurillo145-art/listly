@@ -1,5 +1,16 @@
-2026/06/21-23:26:02.624 1514 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Session Storage/MANIFEST-000001
-2026/06/21-23:26:02.624 1514 Recovering log #41
-2026/06/21-23:26:02.625 1514 Level-0 table #44: started
-2026/06/21-23:26:02.630 1514 Level-0 table #44: 22642 bytes OK
-2026/06/21-23:26:02.633 1514 Delete type=0 #41
+2026/06/29-13:08:49.059 7a94 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Session Storage/MANIFEST-000001
+2026/06/29-13:08:49.062 7a94 Recovering log #10
+2026/06/29-13:08:49.063 7a94 Level-0 table #12: started
+2026/06/29-13:08:49.074 7a94 Level-0 table #12: 26491 bytes OK
+2026/06/29-13:08:49.083 7a94 Delete type=0 #10
+2026/06/29-13:08:49.085 6a8c Compacting 4@0 + 0@1 files
+2026/06/29-13:08:49.099 6a8c Generated table #14@0: 13 keys, 14958 bytes
+2026/06/29-13:08:49.099 6a8c Compacted 4@0 + 0@1 files => 14958 bytes
+2026/06/29-13:08:49.101 6a8c compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/06/29-13:08:49.102 6a8c Delete type=2 #3
+2026/06/29-13:08:49.103 6a8c Delete type=2 #7
+2026/06/29-13:08:49.103 6a8c Delete type=2 #9
+2026/06/29-13:08:49.103 6a8c Delete type=2 #12
+2026/06/29-13:09:30.420 6260 Level-0 table #16: started
+2026/06/29-13:09:30.438 6260 Level-0 table #16: 27125 bytes OK
+2026/06/29-13:09:30.443 6260 Delete type=0 #13

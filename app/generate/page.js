@@ -176,8 +176,6 @@ Lease example is for informational purposes only. Terms, eligibility, taxes, fee
     } else {
       listing = `
 
-:
-
 🔥 ${vehicleName}
 
 🛣️ Mileage: ${Number(mileage).toLocaleString()}
