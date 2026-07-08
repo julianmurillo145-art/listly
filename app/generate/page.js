@@ -174,21 +174,28 @@ Message me directly for current availability, approval requirements, taxes, fees
 Lease example is for informational purposes only. Terms, eligibility, taxes, fees, approval, and availability may vary.
 `;
     } else {
-      listing = `${vehicleName} for sale!
+  const cleanVehicleName = vehicleName
+    .replace(/^Pre-Owned\s+/i, "")
+    .trim();
+
+  const cleanFeatureBlock = featureBlock
+    .replace("⭐ Highlights:", "Highlights:")
+    .replaceAll("✅ ", "- ");
+
+  listing = `${cleanVehicleName} for sale!
 
 Beautiful ${exterior} exterior with ${interior} interior.
 
 ${featureBlock}
 
 ${cpoBlock ? `${cpoBlock}\n\n` : ""}Mileage: ${Number(mileage).toLocaleString()}
+VIN: ${vin}
 
 Free CarFax available upon request.
 Cash, financing, and trade-ins welcome.
 
 Call/Text 949-281-8306 or message me here on Facebook.
-Se habla español.
-
-Let me know if you are interested!`;
+Se habla español.`;
     }
 
     const finalListing = listing.trim();
