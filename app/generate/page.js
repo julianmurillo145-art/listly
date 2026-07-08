@@ -174,31 +174,21 @@ Message me directly for current availability, approval requirements, taxes, fees
 Lease example is for informational purposes only. Terms, eligibility, taxes, fees, approval, and availability may vary.
 `;
     } else {
-      listing = `
+      listing = `${vehicleName} for sale!
 
-🔥 ${vehicleName}
-
-🛣️ Mileage: ${Number(mileage).toLocaleString()}
-🎨 Exterior: ${exterior}
-🪑 Interior: ${interior}
+Beautiful ${exterior} exterior with ${interior} interior.
 
 ${featureBlock}
 
-${cpoBlock}
+${cpoBlock ? `${cpoBlock}\n\n` : ""}Mileage: ${Number(mileage).toLocaleString()}
 
-VIN: ${vin}
+Free CarFax available upon request.
+Cash, financing, and trade-ins welcome.
 
-📋 Free CarFax available upon request.
+Call/Text 949-281-8306 or message me here on Facebook.
+Se habla español.
 
-📲 Call/Text 949-281-8306 or message me here on Facebook.
-🗣️ Se habla español.
-
-💳 Cash and financing options available.
-
-⭐ Yelp Reviews:
-https://www.yelp.com/biz/norm-reeves-genesis-of-cerritos-cerritos
-
-Price listed is before tax, title, registration, and an $85 doc fee.`;
+Let me know if you are interested!`;
     }
 
     const finalListing = listing.trim();
