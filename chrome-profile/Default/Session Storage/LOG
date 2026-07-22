@@ -1,5 +1,2 @@
-2026/07/02-16:25:45.229 7628 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Session Storage/MANIFEST-000001
-2026/07/02-16:25:45.230 7628 Recovering log #15
-2026/07/02-16:25:45.232 7628 Level-0 table #18: started
-2026/07/02-16:25:45.241 7628 Level-0 table #18: 16445 bytes OK
-2026/07/02-16:25:45.250 7628 Delete type=0 #15
+2026/07/22-09:11:53.855 3af4 Creating DB C:\Users\Julia\listly\chrome-profile\Default\Session Storage since it was missing.
+2026/07/22-09:11:53.864 3af4 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Session Storage/MANIFEST-000001

@@ -1,21 +1,13 @@
-2026/07/02-16:25:45.107 7628 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/07/02-16:25:45.116 7628 Recovering log #9
-2026/07/02-16:25:45.124 7628 Level-0 table #12: started
-2026/07/02-16:25:45.131 7628 Level-0 table #12: 21704 bytes OK
-2026/07/02-16:25:45.132 7628 Recovering log #11
-2026/07/02-16:25:45.135 7628 Reusing old log C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/000011.log 
-2026/07/02-16:25:45.138 7628 Delete type=0 #9
-2026/07/02-16:25:45.139 7fb0 Compacting 4@0 + 0@1 files
-2026/07/02-16:25:45.149 7fb0 Generated table #13@0: 45 keys, 23586 bytes
-2026/07/02-16:25:45.149 7fb0 Compacted 4@0 + 0@1 files => 23586 bytes
-2026/07/02-16:25:45.150 7fb0 compacted to: files[ 0 1 0 0 0 0 0 ]
-2026/07/02-16:25:45.151 7fb0 Delete type=2 #3
-2026/07/02-16:25:45.151 7fb0 Delete type=2 #7
-2026/07/02-16:25:45.151 7fb0 Delete type=2 #10
-2026/07/02-16:25:45.152 7fb0 Delete type=2 #12
-2026/07/02-16:26:29.255 7628 Level-0 table #15: started
-2026/07/02-16:26:29.257 7fb0 Current memtable full; waiting...
-2026/07/02-16:26:29.280 7628 Level-0 table #15: 15561 bytes OK
-2026/07/02-16:26:29.285 7628 Delete type=0 #11
-2026/07/02-16:26:29.295 7628 Level-0 table #17: started
-2026/07/02-16:26:29.307 7628 Level-0 table #17: 35296 bytes OK
+2026/07/22-09:11:53.806 3af4 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/07/22-09:11:53.810 3af4 Recovering log #34
+2026/07/22-09:11:53.813 3af4 Level-0 table #37: started
+2026/07/22-09:11:53.818 3af4 Level-0 table #37: 60287 bytes OK
+2026/07/22-09:11:53.819 3af4 Recovering log #36
+2026/07/22-09:11:53.820 3af4 Reusing old log C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/000036.log 
+2026/07/22-09:11:53.822 3af4 Delete type=0 #34
+2026/07/22-09:12:32.686 3af4 Level-0 table #39: started
+2026/07/22-09:12:32.694 43d8 Current memtable full; waiting...
+2026/07/22-09:12:32.695 3af4 Level-0 table #39: 59989 bytes OK
+2026/07/22-09:12:32.696 3af4 Delete type=0 #36
+2026/07/22-09:12:32.697 1670 Compacting 4@0 + 1@1 files
+2026/07/22-09:12:32.705 1670 compacted to: files[ 4 1 0 0 0 0 0 ]

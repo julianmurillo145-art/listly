@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-02T23:26:29.805Z",
+  "checkedAt": "2026-07-22T16:12:33.014Z",
   "vehicles": [
     {
       "vin": "KMHGN4JE0HU171154",
@@ -7,7 +7,7 @@
       "make": "Genesis",
       "model": "G80",
       "trim": "3.8L",
-      "price": 15022,
+      "price": 14121,
       "stock": "0HU171154G"
     },
     {
@@ -16,7 +16,7 @@
       "make": "Genesis",
       "model": "G70",
       "trim": "2.0T",
-      "price": 23022,
+      "price": 22622,
       "stock": "PU121868G"
     },
     {
@@ -25,8 +25,17 @@
       "make": "Genesis",
       "model": "G70",
       "trim": "2.0T",
-      "price": 30110,
+      "price": 29022,
       "stock": "PU122958G"
+    },
+    {
+      "vin": "KMTG34TA8PU126676",
+      "year": "2023",
+      "make": "Genesis",
+      "model": "G70",
+      "trim": "2.0T",
+      "price": 30121,
+      "stock": "PU126676G"
     },
     {
       "vin": "5NMMADTB5RH008370",
@@ -34,53 +43,17 @@
       "make": "Genesis",
       "model": "GV70",
       "trim": "2.5T",
-      "price": 33622,
+      "price": 32022,
       "stock": "RH008370G"
     },
     {
-      "vin": "KMTG14SC1TU161630",
-      "year": "2026",
-      "make": "Genesis",
-      "model": "G70",
-      "trim": "2.5T",
-      "price": 34022,
-      "stock": "TU161630L"
-    },
-    {
-      "vin": "KMUKCDTCXPU018079",
+      "vin": "KMUHBDSB9PU116882",
       "year": "2023",
       "make": "Genesis",
-      "model": "GV60",
-      "trim": "Advanced",
-      "price": 37110,
-      "stock": "PU018079G"
-    },
-    {
-      "vin": "KMTGA4SC2RU217700",
-      "year": "2024",
-      "make": "Genesis",
-      "model": "G80",
+      "model": "GV80",
       "trim": "2.5T",
-      "price": 40121,
-      "stock": "RU217700G"
-    },
-    {
-      "vin": "KMTG24SC9TU163980",
-      "year": "2026",
-      "make": "Genesis",
-      "model": "G70",
-      "trim": "2.5T Prestige",
-      "price": 41121,
-      "stock": "TU163980L"
-    },
-    {
-      "vin": "KMTG24SCXTU161204",
-      "year": "2026",
-      "make": "Genesis",
-      "model": "G70",
-      "trim": "2.5T Prestige",
-      "price": 41121,
-      "stock": "TU161204L"
+      "price": 39022,
+      "stock": "PU116882B"
     },
     {
       "vin": "KMTG24SC5TU170621",
@@ -88,17 +61,26 @@
       "make": "Genesis",
       "model": "G70",
       "trim": "2.5T Prestige",
-      "price": 43022,
+      "price": 42121,
       "stock": "TU170621L"
     },
     {
-      "vin": "KMUKCDSC3TU030702",
+      "vin": "KMTG64SC5TU170462",
       "year": "2026",
       "make": "Genesis",
-      "model": "GV60",
-      "trim": "Advanced 20",
-      "price": 45122,
-      "stock": "TU030702G"
+      "model": "G70",
+      "trim": "2.5T",
+      "price": 43022,
+      "stock": "TU170462L"
+    },
+    {
+      "vin": "KMUHCESC9PU137744",
+      "year": "2023",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "3.5T PRESTIGE 20",
+      "price": 45121,
+      "stock": "PU137744G"
     },
     {
       "vin": "KMUHCESC0PU138636",
@@ -115,7 +97,7 @@
       "make": "Genesis",
       "model": "GV80",
       "trim": "3.5T PRESTIGE 20",
-      "price": 48117,
+      "price": 47022,
       "stock": "PU138693G"
     },
     {
@@ -124,7 +106,7 @@
       "make": "Genesis",
       "model": "G80",
       "trim": "2.5T",
-      "price": 49622,
+      "price": 48121,
       "stock": "TU305872L"
     },
     {
@@ -133,7 +115,7 @@
       "make": "Genesis",
       "model": "G80",
       "trim": "2.5T",
-      "price": 54022,
+      "price": 52022,
       "stock": "TU300405L"
     },
     {
@@ -142,17 +124,8 @@
       "make": "Genesis",
       "model": "G80",
       "trim": "2.5T",
-      "price": 54610,
+      "price": 53121,
       "stock": "TU322410L"
-    },
-    {
-      "vin": "KMUHGESB2TU311644",
-      "year": "2026",
-      "make": "Genesis",
-      "model": "GV80",
-      "trim": "2.5T Select",
-      "price": 55022,
-      "stock": "TU311644L"
     },
     {
       "vin": "KMTGA4SC2TU306917",
@@ -160,8 +133,44 @@
       "make": "Genesis",
       "model": "G80",
       "trim": "2.5T",
-      "price": 55117,
+      "price": 54022,
       "stock": "TU306917L"
+    },
+    {
+      "vin": "KMTGA4SC9TU327313",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "G80",
+      "trim": "2.5T",
+      "price": 54022,
+      "stock": "TU327313L"
+    },
+    {
+      "vin": "KMUHGESB2TU311644",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "2.5T Select",
+      "price": 54121,
+      "stock": "TU311644L"
+    },
+    {
+      "vin": "KMUHGESB9TU321250",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "2.5T Select",
+      "price": 55022,
+      "stock": "TU321250L"
+    },
+    {
+      "vin": "KMUHFESB8TU338477",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "2.5T",
+      "price": 55121,
+      "stock": "TU338477L"
     },
     {
       "vin": "KMUHGESB0TU321119",
@@ -169,8 +178,17 @@
       "make": "Genesis",
       "model": "GV80",
       "trim": "2.5T Select",
-      "price": 56910,
+      "price": 55122,
       "stock": "TU321119L"
+    },
+    {
+      "vin": "KMTGB4SC3TU317230",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "G80",
+      "trim": "2.5T Advanced",
+      "price": 56022,
+      "stock": "TU317230L"
     },
     {
       "vin": "KMUMDDTC4TU252136",
@@ -178,17 +196,8 @@
       "make": "Genesis",
       "model": "GV70",
       "trim": "3.5T Sport Advanced",
-      "price": 59022,
+      "price": 57022,
       "stock": "TU252136L"
-    },
-    {
-      "vin": "5NMMDDTC6TH056189",
-      "year": "2026",
-      "make": "Genesis",
-      "model": "GV70",
-      "trim": "3.5T Sport Advanced",
-      "price": 59022,
-      "stock": "TH056189L"
     },
     {
       "vin": "5NMMDDTC2TH047490",
@@ -196,8 +205,44 @@
       "make": "Genesis",
       "model": "GV70",
       "trim": "3.5T Sport Advanced",
+      "price": 57022,
+      "stock": "TH047490L"
+    },
+    {
+      "vin": "KMUHFESB9TU337953",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "2.5T",
+      "price": 57022,
+      "stock": "TU337953L"
+    },
+    {
+      "vin": "5NMMDDTC6TH056189",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV70",
+      "trim": "3.5T Sport Advanced",
+      "price": 57622,
+      "stock": "TH056189L"
+    },
+    {
+      "vin": "KMUMDDTC1TU252353",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV70",
+      "trim": "3.5T Sport Advanced",
+      "price": 59022,
+      "stock": "TU252353L"
+    },
+    {
+      "vin": "5NMMDDTC1TH048369",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV70",
+      "trim": "3.5T Sport Advanced",
       "price": 59121,
-      "stock": "TH047490G"
+      "stock": "TH048369L"
     },
     {
       "vin": "KMTGC4SC5TU306937",
@@ -209,31 +254,22 @@
       "stock": "TU306937L"
     },
     {
-      "vin": "KMUHBESB6TU316571",
-      "year": "2026",
-      "make": "Genesis",
-      "model": "GV80",
-      "trim": "2.5T Advanced",
-      "price": 61622,
-      "stock": "TU316571L"
-    },
-    {
       "vin": "KMUHBESB4TU327858",
       "year": "2026",
       "make": "Genesis",
       "model": "GV80",
       "trim": "2.5T Advanced",
-      "price": 62710,
+      "price": 61121,
       "stock": "TU327858L"
     },
     {
-      "vin": "5NMMEDTC2TH057787",
+      "vin": "5NMMEDTC4TH059699",
       "year": "2026",
       "make": "Genesis",
       "model": "GV70",
       "trim": "3.5T Sport Prestige",
-      "price": 64022,
-      "stock": "TH057787L"
+      "price": 63121,
+      "stock": "TH059699L"
     },
     {
       "vin": "KMUHDESC7TU294678",
@@ -241,17 +277,17 @@
       "make": "Genesis",
       "model": "GV80",
       "trim": "3.5T ADVANCED AWD",
-      "price": 66022,
+      "price": 64022,
       "stock": "TU294678L"
     },
     {
-      "vin": "KMUHDESC2TU306123",
+      "vin": "5NMMEET18TH006993",
       "year": "2026",
       "make": "Genesis",
-      "model": "GV80",
-      "trim": "3.5T Advanced",
-      "price": 69610,
-      "stock": "TU306123L"
+      "model": "Electrified GV70",
+      "trim": "Prestige 20",
+      "price": 65122,
+      "stock": "TH006993L"
     },
     {
       "vin": "KMUHDESC0TU306119",
@@ -259,8 +295,35 @@
       "make": "Genesis",
       "model": "GV80",
       "trim": "3.5T Advanced",
-      "price": 70121,
+      "price": 67022,
       "stock": "TU306119L"
+    },
+    {
+      "vin": "KMUHCESB2TU337995",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "2.5T Prestige",
+      "price": 67121,
+      "stock": "TU337995L"
+    },
+    {
+      "vin": "KMUHDESC2TU306123",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "3.5T Advanced",
+      "price": 68022,
+      "stock": "TU306123L"
+    },
+    {
+      "vin": "KMUHCESB7TU338155",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "2.5T Prestige",
+      "price": 68117,
+      "stock": "TU338155L"
     },
     {
       "vin": "KMUHEESC7TU306583",
@@ -268,17 +331,17 @@
       "make": "Genesis",
       "model": "GV80",
       "trim": "3.5T PRESTIGE AWD",
-      "price": 72622,
+      "price": 71121,
       "stock": "TU306583L"
     },
     {
-      "vin": "KMUHCESC6TU296389",
+      "vin": "KMUHEESC2TU335439",
       "year": "2026",
       "make": "Genesis",
       "model": "GV80",
-      "trim": "3.5T Prestige Black",
-      "price": 75622,
-      "stock": "TU296389L"
+      "trim": "3.5T Prestige",
+      "price": 74017,
+      "stock": "TU335439L"
     },
     {
       "vin": "KMUHEESC8TU294301",
@@ -286,17 +349,17 @@
       "make": "Genesis",
       "model": "GV80",
       "trim": "3.5T Prestige",
-      "price": 77022,
+      "price": 74022,
       "stock": "TU294301L"
     },
     {
-      "vin": "MAJ3S2FE0MC450554",
-      "year": "2021",
-      "make": "Ford",
-      "model": "EcoSport",
-      "trim": "S",
-      "price": 11121,
-      "stock": "MC450554G"
+      "vin": "KMUHCESC6TU296389",
+      "year": "2026",
+      "make": "Genesis",
+      "model": "GV80",
+      "trim": "3.5T Prestige Black",
+      "price": 74022,
+      "stock": "TU296389L"
     },
     {
       "vin": "5XYZW4LA1FG253431",
@@ -304,8 +367,26 @@
       "make": "Hyundai",
       "model": "Santa Fe Sport",
       "trim": "",
-      "price": 11610,
+      "price": 10622,
       "stock": "FG253431G"
+    },
+    {
+      "vin": "WA1M2AFP7HA034345",
+      "year": "2017",
+      "make": "Audi",
+      "model": "Q5",
+      "trim": "Premium Plus",
+      "price": 14022,
+      "stock": "HA034345G"
+    },
+    {
+      "vin": "3VV2B7AXXMM125759",
+      "year": "2021",
+      "make": "Volkswagen",
+      "model": "Tiguan",
+      "trim": "SE",
+      "price": 15121,
+      "stock": "MM125759G"
     },
     {
       "vin": "5N1BT3BA9PC935545",
@@ -313,8 +394,17 @@
       "make": "Nissan",
       "model": "Rogue",
       "trim": "SV",
-      "price": 18622,
+      "price": 17622,
       "stock": "PC935545G"
+    },
+    {
+      "vin": "KNDEU2AA7N7289129",
+      "year": "2022",
+      "make": "Kia",
+      "model": "Seltos",
+      "trim": "S",
+      "price": 18022,
+      "stock": "N7289129G"
     },
     {
       "vin": "5J6RW1H83JL015978",
@@ -322,7 +412,7 @@
       "make": "Honda",
       "model": "CR-V",
       "trim": "EX-L",
-      "price": 19121,
+      "price": 18022,
       "stock": "JL015978G"
     },
     {
@@ -331,17 +421,8 @@
       "make": "Kia",
       "model": "Seltos",
       "trim": "S",
-      "price": 20121,
+      "price": 19022,
       "stock": "P7458661G"
-    },
-    {
-      "vin": "KMHL54JJ9MA035760",
-      "year": "2021",
-      "make": "Hyundai",
-      "model": "Sonata Hybrid",
-      "trim": "Limited",
-      "price": 20121,
-      "stock": "MA035760G"
     },
     {
       "vin": "3KPF54AD9PE571184",
@@ -349,35 +430,26 @@
       "make": "Kia",
       "model": "Forte",
       "trim": "GT-Line",
-      "price": 20121,
+      "price": 19022,
       "stock": "PE571184G"
     },
     {
-      "vin": "SADCJ2GX2LA624426",
-      "year": "2020",
-      "make": "Jaguar",
-      "model": "F-PACE",
-      "trim": "30t Premium",
-      "price": 20121,
-      "stock": "LA624426G"
+      "vin": "KMHL54JJ9MA035760",
+      "year": "2021",
+      "make": "Hyundai",
+      "model": "Sonata Hybrid",
+      "trim": "Limited",
+      "price": 19622,
+      "stock": "MA035760G"
     },
     {
-      "vin": "1C4PJMMB2PD105706",
+      "vin": "JN1AF0BA1PM407744",
       "year": "2023",
-      "make": "Jeep",
-      "model": "Cherokee",
-      "trim": "Altitude Lux",
-      "price": 20617,
-      "stock": "PD105706G"
-    },
-    {
-      "vin": "W1N0G8DB6NV389879",
-      "year": "2022",
-      "make": "Mercedes-Benz",
-      "model": "GLC",
-      "trim": "GLC 300",
-      "price": 21622,
-      "stock": "NV389879G"
+      "make": "Nissan",
+      "model": "ARIYA",
+      "trim": "ENGAGE",
+      "price": 21121,
+      "stock": "PM407744G"
     },
     {
       "vin": "WAUAUDGY9RA126454",
@@ -385,17 +457,8 @@
       "make": "Audi",
       "model": "A3",
       "trim": "Premium",
-      "price": 22622,
+      "price": 21622,
       "stock": "RA126454G"
-    },
-    {
-      "vin": "JTJYARBZ6K2156516",
-      "year": "2019",
-      "make": "Lexus",
-      "model": "NX",
-      "trim": "NX 300",
-      "price": 22772,
-      "stock": "K2156516G"
     },
     {
       "vin": "WA1AXAF74LD001380",
@@ -403,7 +466,7 @@
       "make": "Audi",
       "model": "Q7",
       "trim": "Premium",
-      "price": 24022,
+      "price": 23017,
       "stock": "LD001380G"
     },
     {
@@ -412,7 +475,7 @@
       "make": "Land Rover",
       "model": "Discovery Sport",
       "trim": "S",
-      "price": 25110,
+      "price": 24572,
       "stock": "PH920253G"
     },
     {
@@ -421,26 +484,44 @@
       "make": "BMW",
       "model": "X1",
       "trim": "xDrive28i",
-      "price": 25572,
+      "price": 24622,
       "stock": "P5W49874G"
     },
     {
-      "vin": "19XFL2H84SE026165",
-      "year": "2025",
-      "make": "Honda",
-      "model": "Civic Hatchback",
-      "trim": "Sport",
-      "price": 27022,
-      "stock": "SE026165G"
+      "vin": "KM8KN4AE4PU172817",
+      "year": "2023",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "trim": "SEL",
+      "price": 24772,
+      "stock": "PU172817G"
     },
     {
-      "vin": "3TMBZ5DN5JM013164",
-      "year": "2018",
-      "make": "Toyota",
-      "model": "Tacoma",
-      "trim": "SR5",
-      "price": 27022,
-      "stock": "JM013164G"
+      "vin": "KNDCT3L17P5018275",
+      "year": "2023",
+      "make": "Kia",
+      "model": "Niro EV",
+      "trim": "Wave",
+      "price": 24772,
+      "stock": "P5018275G"
+    },
+    {
+      "vin": "KMHL54JJ1PA071558",
+      "year": "2023",
+      "make": "Hyundai",
+      "model": "Sonata Hybrid",
+      "trim": "Limited",
+      "price": 25621,
+      "stock": "PA071558G"
+    },
+    {
+      "vin": "KM8KN4DE4RU263651",
+      "year": "2024",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "trim": "SEL",
+      "price": 26022,
+      "stock": "RU263651G"
     },
     {
       "vin": "ZN682AVA0P7432365",
@@ -448,8 +529,35 @@
       "make": "Maserati",
       "model": "Grecale",
       "trim": "GT",
-      "price": 27121,
+      "price": 26022,
       "stock": "P7432365G"
+    },
+    {
+      "vin": "KM8KN4DE6RU293251",
+      "year": "2024",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "trim": "SEL",
+      "price": 26022,
+      "stock": "RU293251G"
+    },
+    {
+      "vin": "19XFL2H84SE026165",
+      "year": "2025",
+      "make": "Honda",
+      "model": "Civic Hatchback",
+      "trim": "Sport",
+      "price": 26121,
+      "stock": "SE026165G"
+    },
+    {
+      "vin": "KM8KN4DE5RU289157",
+      "year": "2024",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "trim": "SEL",
+      "price": 26872,
+      "stock": "RU289157G"
     },
     {
       "vin": "5YJYGDEE4LF023362",
@@ -457,17 +565,17 @@
       "make": "Tesla",
       "model": "Model Y",
       "trim": "Long Range",
-      "price": 29117,
+      "price": 28022,
       "stock": "LF023362G"
     },
     {
-      "vin": "KNAE55LC9N6112405",
-      "year": "2022",
-      "make": "Kia",
-      "model": "Stinger",
-      "trim": "GT2",
-      "price": 32022,
-      "stock": "N6112405G"
+      "vin": "KM8KR4DE1RU289998",
+      "year": "2024",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "trim": "Limited",
+      "price": 29717,
+      "stock": "RU289998G"
     },
     {
       "vin": "1C4PJXFG8RW259953",
@@ -475,8 +583,17 @@
       "make": "Jeep",
       "model": "Wrangler",
       "trim": "Rubicon",
-      "price": 33022,
+      "price": 31622,
       "stock": "RW259953G"
+    },
+    {
+      "vin": "KM8KR4DE3RU286892",
+      "year": "2024",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "trim": "Limited",
+      "price": 31622,
+      "stock": "RU286892G"
     },
     {
       "vin": "5TDKDRAH4PS040529",
@@ -484,26 +601,26 @@
       "make": "Toyota",
       "model": "Highlander",
       "trim": "XLE",
-      "price": 33772,
+      "price": 32622,
       "stock": "PS040529G"
     },
     {
-      "vin": "1C4PJXEN4SW546874",
+      "vin": "1C4RJHAG0SC291423",
       "year": "2025",
       "make": "Jeep",
-      "model": "Wrangler",
-      "trim": "Sahara",
-      "price": 33972,
-      "stock": "SW546874G"
+      "model": "Grand Cherokee",
+      "trim": "Altitude X",
+      "price": 33817,
+      "stock": "SC291423G"
     },
     {
-      "vin": "1GCPWDED3LZ338573",
-      "year": "2020",
-      "make": "Chevrolet",
-      "model": "Silverado 1500",
-      "trim": "RST",
-      "price": 34110,
-      "stock": "LZ338573G"
+      "vin": "5J8TC1H56PL006826",
+      "year": "2023",
+      "make": "Acura",
+      "model": "RDX",
+      "trim": "w/Technology Package",
+      "price": 34022,
+      "stock": "PL006826G"
     },
     {
       "vin": "5NMP4DGL1RH068105",
@@ -515,31 +632,22 @@
       "stock": "RH068105G"
     },
     {
-      "vin": "5J8TC1H56PL006826",
-      "year": "2023",
-      "make": "Acura",
-      "model": "RDX",
-      "trim": "w/Technology Package",
-      "price": 35022,
-      "stock": "PL006826G"
-    },
-    {
-      "vin": "1C4RJHAG0SC291423",
-      "year": "2025",
-      "make": "Jeep",
-      "model": "Grand Cherokee",
-      "trim": "Altitude X",
-      "price": 35122,
-      "stock": "SC291423G"
-    },
-    {
       "vin": "5FPYK3F53RB000694",
       "year": "2024",
       "make": "Honda",
       "model": "Ridgeline",
       "trim": "RTL",
-      "price": 36104,
+      "price": 34622,
       "stock": "RB000694G"
+    },
+    {
+      "vin": "W1KAF4GB7RR204391",
+      "year": "2024",
+      "make": "Mercedes-Benz",
+      "model": "C-Class",
+      "trim": "C 300",
+      "price": 35122,
+      "stock": "RR204391G"
     },
     {
       "vin": "19UUB5F51PA006603",
@@ -547,44 +655,17 @@
       "make": "Acura",
       "model": "TLX",
       "trim": "w/A-Spec Package",
-      "price": 36110,
+      "price": 35122,
       "stock": "PA006603G"
     },
     {
-      "vin": "2T2ADCAZXRC013487",
-      "year": "2024",
-      "make": "Lexus",
-      "model": "NX",
-      "trim": "NX 250",
-      "price": 36121,
-      "stock": "RC013487G"
-    },
-    {
-      "vin": "5YJ3E1EA7SF908990",
-      "year": "2025",
-      "make": "Tesla",
-      "model": "Model 3",
-      "trim": "Long Range",
-      "price": 36622,
-      "stock": "SF908990G"
-    },
-    {
-      "vin": "5FNYG2H49RB013569",
-      "year": "2024",
-      "make": "Honda",
-      "model": "Pilot",
-      "trim": "EX-L 8 Passenger",
-      "price": 38031,
-      "stock": "RB013569G"
-    },
-    {
-      "vin": "2T2GGCEZ8RC038982",
-      "year": "2024",
-      "make": "Lexus",
-      "model": "NX",
-      "trim": "NX 350 Premium",
-      "price": 38982,
-      "stock": "RC038982G"
+      "vin": "WDDWJ6EB1LF977224",
+      "year": "2020",
+      "make": "Mercedes-Benz",
+      "model": "C-Class",
+      "trim": "AMG® C 43",
+      "price": 36117,
+      "stock": "LF977224G"
     },
     {
       "vin": "WAU1BCFU7SN043893",
@@ -592,8 +673,35 @@
       "make": "Audi",
       "model": "A5",
       "trim": "Premium",
-      "price": 39022,
+      "price": 37022,
       "stock": "SN043893G"
+    },
+    {
+      "vin": "5FNYG2H49RB013569",
+      "year": "2024",
+      "make": "Honda",
+      "model": "Pilot",
+      "trim": "EX-L 8 Passenger",
+      "price": 37622,
+      "stock": "RB013569G"
+    },
+    {
+      "vin": "SADHM2S10R1636275",
+      "year": "2024",
+      "make": "Jaguar",
+      "model": "I-PACE",
+      "trim": "R-Dynamic HSE",
+      "price": 39622,
+      "stock": "R1636275G"
+    },
+    {
+      "vin": "3C6UR5HL3NG193838",
+      "year": "2022",
+      "make": "Ram",
+      "model": "2500",
+      "trim": "Tradesman",
+      "price": 40121,
+      "stock": "NG193838G"
     },
     {
       "vin": "W1KZH6AB2NB072922",
@@ -601,17 +709,17 @@
       "make": "Mercedes-Benz",
       "model": "E-Class",
       "trim": "E 450",
-      "price": 49622,
+      "price": 49022,
       "stock": "NB072922G"
     },
     {
-      "vin": "7SAXCDE53RF435940",
-      "year": "2024",
-      "make": "Tesla",
-      "model": "Model X",
-      "trim": "Long Range",
-      "price": 59022,
-      "stock": "RF435940G"
+      "vin": "4JGFD6BB0MA281924",
+      "year": "2021",
+      "make": "Mercedes-Benz",
+      "model": "GLE",
+      "trim": "AMG® GLE 53",
+      "price": 50121,
+      "stock": "MA281924G"
     }
   ]
 }

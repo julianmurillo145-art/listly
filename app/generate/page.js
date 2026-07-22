@@ -146,34 +146,86 @@ ${picked.slice(0, 5).map((feature) => `✅ ${titleCase(feature)}`).join("\n")}`;
 
     let listing = "";
 
-    if (type === "New") {
-      listing = `
-NEW GENESIS LEASE SPECIAL
+   if (type === "New") {
+  const cleanNewVehicleName = vehicleName
+    .replace(/^New\s+/i, "")
+    .trim();
 
-${vehicleName}
+  const formatMoneyInput = (value) => {
+    const cleaned = String(value || "")
+      .replace(/[^0-9.]/g, "");
 
-Lease Example:
-💰 ${monthlyPayment || "Message for current monthly payment"}
-📄 Term: ${leaseTerm || "See current offer details"}
-💵 Due at Signing: ${dueAtSigning || "Message for current due at signing"}
-🛣️ Miles: ${annualMiles || "See current mileage allowance"}
+    if (!cleaned) return "";
 
-Vehicle Details:
-🎨 Exterior: ${exterior}
-🪑 Interior: ${interior}
-VIN: ${vin}
+    const amount = Number(cleaned);
 
-${featureBlock}
+    return Number.isFinite(amount)
+      ? amount.toLocaleString("en-US", {
+          maximumFractionDigits: 2,
+        })
+      : "";
+  };
 
-${powertrainBlock}
+  const monthly = formatMoneyInput(monthlyPayment);
+  const signing = formatMoneyInput(dueAtSigning);
 
-${leaseNotes ? `Additional Notes:\n${leaseNotes}\n` : ""}
+  const term = String(leaseTerm || "")
+    .replace(/[^0-9]/g, "");
 
-Message me directly for current availability, approval requirements, taxes, fees, and updated incentives.
+  const milesNumber = Number(
+    String(annualMiles || "").replace(/[^0-9]/g, "")
+  );
 
-Lease example is for informational purposes only. Terms, eligibility, taxes, fees, approval, and availability may vary.
-`;
-    } else {
+  const miles = milesNumber
+    ? milesNumber.toLocaleString("en-US")
+    : "";
+
+  const marketplaceTitle = monthly
+    ? `${cleanNewVehicleName} - $${monthly}/mo Lease`
+    : `${cleanNewVehicleName} Lease Special`;
+
+  listing = `${marketplaceTitle}
+
+NEW ${cleanNewVehicleName.toUpperCase()} LEASE SPECIAL
+
+Lease for ${
+    monthly
+      ? `$${monthly} per month`
+      : "current monthly payment"
+  }
+
+${
+    term
+      ? `${term}-month lease`
+      : "Lease term available upon request"
+  }
+${
+    miles
+      ? `${miles} miles per year`
+      : "Mileage allowance available upon request"
+  }
+${
+    signing
+      ? `$${signing} due at signing`
+      : "Due at signing available upon request"
+  }
+
+Your Genesis lease also comes with:
+
+• Complimentary scheduled maintenance
+• Complimentary Service Valet
+• Complimentary roadside assistance
+• Access to the Genesis app for the duration of the lease
+
+Offer available to well-qualified lessees with Valued Owner Bonus or Competitive Owner Bonus.
+
+Plus tax and license.
+
+Message me here on Facebook or call/text:
+949-281-8306
+
+Hablo español.`;
+} else {
   const cleanVehicleName = vehicleName
     .replace(/^Pre-Owned\s+/i, "")
     .trim();

@@ -1,9 +1,9 @@
-2026/06/29-13:08:48.924 7a94 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/06/29-13:08:48.935 7a94 Recovering log #6
-2026/06/29-13:08:48.940 7a94 Reusing old log C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/000006.log 
-2026/06/29-13:09:30.426 6a8c Level-0 table #10: started
-2026/06/29-13:09:30.440 7a94 Current memtable full; waiting...
-2026/06/29-13:09:30.441 6a8c Level-0 table #10: 16132 bytes OK
-2026/06/29-13:09:30.445 6a8c Delete type=0 #6
-2026/06/29-13:09:30.454 6a8c Level-0 table #12: started
-2026/06/29-13:09:30.463 6a8c Level-0 table #12: 21704 bytes OK
+2026/07/19-21:10:03.839 4718 Reusing MANIFEST C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/07/19-21:10:03.859 4718 Recovering log #32
+2026/07/19-21:10:03.864 4718 Level-0 table #35: started
+2026/07/19-21:10:03.877 4718 Level-0 table #35: 61466 bytes OK
+2026/07/19-21:10:03.878 4718 Recovering log #34
+2026/07/19-21:10:03.885 4718 Reusing old log C:\Users\Julia\listly\chrome-profile\Default\Local Storage\leveldb/000034.log 
+2026/07/19-21:10:03.889 4718 Delete type=0 #32
+2026/07/19-21:10:55.123 1998 Level-0 table #37: started
+2026/07/19-21:10:55.138 1998 Level-0 table #37: 60287 bytes OK
